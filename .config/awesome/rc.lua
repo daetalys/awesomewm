@@ -246,7 +246,7 @@ awful.screen.connect_for_each_screen(function(s)
         s.mytasklist, -- Middle widget
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
-            mykeyboardlayout,
+--            mykeyboardlayout,
             wibox.widget.systray(),
             mytextclock,
             s.mylayoutbox,
@@ -362,7 +362,12 @@ globalkeys = gears.table.join(
               {description = "lua execute prompt", group = "awesome"}),
     -- Menubar
     awful.key({ modkey }, "p", function() menubar.show() end,
-              {description = "show the menubar", group = "launcher"})
+              {description = "show the menubar", group = "launcher"}),
+    -- Custom program bindings
+    awful.key({ modkey }, "b", function () awful.spawn(browser) end,
+              {description = "open browser", group = "launcher"}),
+    awful.key({ modkey }, "e", function () awful.spawn(filemanager) end,
+              {description = "open file manager", group = "launcher"})
 )
 
 clientkeys = gears.table.join(
