@@ -45,45 +45,91 @@ end
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
-beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
-
-local theme_assets = require("beautiful.theme_assets")
 local xresources = require("beautiful.xresources")
 local dpi = xresources.apply_dpi
+beautiful.init(
+  {
+    font          = "FiraCode Nerd Font Mono 9",
 
-local gfs = require("gears.filesystem")
-local themes_path = gfs.get_themes_dir()
+    bg_normal     = "#FF000000",
+    bg_focus      = "#FF000000",
+    bg_urgent     = "#c40000",
+    bg_minimize   = "#000000",
+    bg_systray    = "#000000",--bg_normal,
 
-local theme = {}
+    fg_normal     = "#aaaaaa",
+    fg_focus      = "#6298e0",
+    fg_urgent     = "#fafbff",
+    fg_minimize   = "#484848",
 
-theme.font          = "sans 8"
+    useless_gap = dpi(6),
+    gap_single_client = true,
+    border_width  = dpi(1),
+    border_normal = "#316ab7",
+    border_focus  = "#c40000",--"#91231c",
+    border_marked = "#6298e0",
 
-theme.bg_normal     = "#222222"
-theme.bg_focus      = "#535d6c"
-theme.bg_urgent     = "#ff0000"
-theme.bg_minimize   = "#444444"
-theme.bg_systray    = theme.bg_normal
+    taglist_squares_sel   = "/usr/share/awesome/themes/zenburn/taglist/squarefz.png",
+    taglist_squares_unsel = "/usr/share/awesome/themes/zenburn/taglist/squarez.png",
 
-theme.fg_normal     = "#aaaaaa"
-theme.fg_focus      = "#ffffff"
-theme.fg_urgent     = "#ffffff"
-theme.fg_minimize   = "#ffffff"
+    menu_submenu_icon = "/usr/share/awesome/themes/blackarch/submenu.png",
+    menu_height = 15,
+    menu_width  = 100,
 
-beautiful.useless_gap = dpi(6)
-beautiful.gap_single_client = true
-beautiful.border_width  = dpi(1)
-beautiful.border_normal = "#316ab7"
-beautiful.border_focus  = "#91231c"
-beautiful.border_marked = "#6298e0"
+    titlebar_close_button_normal = "/usr/share/awesome/themes/blackarch/titlebar/close_normal.png",
+    titlebar_close_button_focus  = "/usr/share/awesome/themes/blackarch/titlebar/close_focus.png",
+
+    titlebar_ontop_button_normal_inactive = "/usr/share/awesome/themes/blackarch/titlebar/ontop_normal_inactive.png",
+    titlebar_ontop_button_focus_inactive  = "/usr/share/awesome/themes/blackarch/titlebar/ontop_focus_inactive.png",
+    titlebar_ontop_button_normal_active = "/usr/share/awesome/themes/blackarch/titlebar/ontop_normal_active.png",
+    titlebar_ontop_button_focus_active  = "/usr/share/awesome/themes/blackarch/titlebar/ontop_focus_active.png",
+
+    titlebar_sticky_button_normal_inactive = "/usr/share/awesome/themes/blackarch/titlebar/sticky_normal_inactive.png",
+    titlebar_sticky_button_focus_inactive  = "/usr/share/awesome/themes/blackarch/titlebar/sticky_focus_inactive.png",
+    titlebar_sticky_button_normal_active = "/usr/share/awesome/themes/blackarch/titlebar/sticky_normal_active.png",
+    titlebar_sticky_button_focus_active  = "/usr/share/awesome/themes/blackarch/titlebar/sticky_focus_active.png",
+
+    titlebar_floating_button_normal_inactive = "/usr/share/awesome/themes/blackarch/titlebar/floating_normal_inactive.png",
+    titlebar_floating_button_focus_inactive  = "/usr/share/awesome/themes/blackarch/titlebar/floating_focus_inactive.png",
+    titlebar_floating_button_normal_active = "/usr/share/awesome/themes/blackarch/titlebar/floating_normal_active.png",
+    titlebar_floating_button_focus_active  = "/usr/share/awesome/themes/blackarch/titlebar/floating_focus_active.png",
+
+    titlebar_maximized_button_normal_inactive = "/usr/share/awesome/themes/blackarch/titlebar/maximized_normal_inactive.png",
+    titlebar_maximized_button_focus_inactive  = "/usr/share/awesome/themes/blackarch/titlebar/maximized_focus_inactive.png",
+    titlebar_maximized_button_normal_active = "/usr/share/awesome/themes/blackarch/titlebar/maximized_normal_active.png",
+    titlebar_maximized_button_focus_active  = "/usr/share/awesome/themes/blackarch/titlebar/maximized_focus_active.png",
+
+    wallpaper = "/home/daetalys/Pictures/wallpapers/2D7478E3-402D-4C8B-AB1C-032F461A9BB5.jpg",
+
+    layout_fairh = "/usr/share/awesome/themes/blackarch/layouts/fairhw.png",
+    layout_fairv = "/usr/share/awesome/themes/blackarch/layouts/fairvw.png",
+    layout_floating  = "/usr/share/awesome/themes/blackarch/layouts/floatingw.png",
+    layout_magnifier = "/usr/share/awesome/themes/blackarch/layouts/magnifierw.png",
+    layout_max = "/usr/share/awesome/themes/blackarch/layouts/maxw.png",
+    layout_fullscreen = "/usr/share/awesome/themes/blackarch/layouts/fullscreenw.png",
+    layout_tilebottom = "/usr/share/awesome/themes/blackarch/layouts/tilebottomw.png",
+    layout_tileleft   = "/usr/share/awesome/themes/blackarch/layouts/tileleftw.png",
+    layout_tile = "/usr/share/awesome/themes/blackarch/layouts/tilew.png",
+    layout_tiletop = "/usr/share/awesome/themes/blackarch/layouts/tiletopw.png",
+    layout_spiral  = "/usr/share/awesome/themes/blackarch/layouts/spiralw.png",
+    layout_dwindle = "/usr/share/awesome/themes/blackarch/layouts/dwindlew.png",
+    layout_cornernw = "/usr/share/awesome/themes/blackarch/layouts/cornernww.png",
+    layout_cornerne = "/usr/share/awesome/themes/blackarch/layouts/cornernew.png",
+    layout_cornersw = "/usr/share/awesome/themes/blackarch/layouts/cornersww.png",
+    layout_cornerse = "/usr/share/awesome/themes/blackarch/layouts/cornersew.png",
+
+    icon_theme = "/usr/share/icons/BeautyLine/",
+}
+)
 
 -- This is used later as the default terminal and editor to run.
-terminal = os.getenv("TERMINAL") or "alacritty"
+terminal = os.getenv("TERMINAL") or "mullvad-exclude alacritty"
 editor = os.getenv("EDITOR") or "vim"
-local editorgui = os.getenv("VISUAL") or "vscodium"
+local editorgui = os.getenv("VISUAL") or "lapce"
 editor_cmd = terminal .. " -e " .. editor
-local browser = os.getenv("BROWSER") or "brave"
+local browser = os.getenv("BROWSER") or "mullvad-exclude brave"
 local filemanager = "spacefm"
-local mailclient = "thunderbird"
+local mailclient = "mullvad-exclude thunderbird"
 local mediaplayer = "vlc"
 local scrlocker = "xlocker"
 local virtualmachine = "virtualbox"
@@ -102,13 +148,13 @@ awful.layout.layouts = {
     -- awful.layout.suit.tile.left,
     -- awful.layout.suit.tile.bottom,
     -- awful.layout.suit.tile.top,
-    -- awful.layout.suit.fair,
+    awful.layout.suit.fair,
     -- awful.layout.suit.fair.horizontal,
     awful.layout.suit.spiral,
-    -- awful.layout.suit.spiral.dwindle,
-    -- awful.layout.suit.max,
+    awful.layout.suit.spiral.dwindle,
+    awful.layout.suit.max,
     awful.layout.suit.max.fullscreen,
-    -- awful.layout.suit.magnifier,
+    awful.layout.suit.magnifier,
     -- awful.layout.suit.corner.nw,
     -- awful.layout.suit.corner.ne,
     -- awful.layout.suit.corner.sw,
@@ -228,8 +274,39 @@ awful.screen.connect_for_each_screen(function(s)
     s.mytasklist = awful.widget.tasklist {
         screen  = s,
         filter  = awful.widget.tasklist.filter.currenttags,
-        buttons = tasklist_buttons
-    }
+        buttons = tasklist_buttons,
+        style    = {
+        shape  = gears.shape.rounded_bar,
+    },
+    layout   = {
+        spacing = 10,
+        layout  = wibox.layout.fixed.horizontal
+    },
+    -- Notice that there is *NO* wibox.wibox prefix, it is a template,
+    -- not a widget instance.
+    widget_template = {
+        {
+            {
+                {
+                    id     = 'clienticon',
+                    widget = awful.widget.clienticon,
+                },
+                margins = 2,
+                widget  = wibox.container.margin,
+            },
+            {
+                id     = 'text_role',
+                widget = wibox.widget.textbox,
+            },
+            layout = wibox.layout.fixed.horizontal,
+        },
+        nil,
+        create_callback = function(self, c, index, objects) --luacheck: no unused args
+            self:get_children_by_id('clienticon')[1].client = c
+        end,
+        layout = wibox.layout.align.vertical,
+    },
+}
 
     -- Create the wibox
     s.mywibox = awful.wibar({ position = "top", screen = s })
@@ -537,6 +614,8 @@ awful.rules.rules = {
     -- Set Firefox to always map on the tag named "2" on screen 1.
      { rule = { class = "Firefox" },
        properties = { screen = 1, tag = "2" } },
+     { rule = { class = "Brave" },
+       properties = { screen = 1, tag = "2" } },
 }
 -- }}}
 
@@ -607,14 +686,13 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 -- Autostart Hook
 awful.spawn.with_shell("xrdb -merge ~/.Xresources")
 awful.spawn.with_shell("xmodmap ~/.Xmodmap")
-awful.spawn.with_shell("feh --bg-scale $XDG_PICTURES_DIR/wallpapers/2D7478E3-402D-4C8B-AB1C-032F461A9BB5.jpg")
-awful.spawn.with_shell("picom --config $HOME/.config/picom.conf")
-awful.spawn.with_shell("pipewire")
-awful.spawn.with_shell("pipewire-pulse")
-awful.spawn.with_shell("wireplumber")
-awful.spawn.with_shell("pa-applet")
-awful.spawn.with_shell("nm-applet")
-awful.spawn.with_shell("lxpolkit")
-awful.spawn.with_shell("kdeconnectd")
-awful.spawn.with_shell("kdeconnect-indicator")
-awful.spawn.with_shell("/usr/bin/dunst")
+-- awful.spawn.with_shell("picom --config $HOME/.config/picom.conf")
+-- awful.spawn.with_shell("pipewire")
+-- awful.spawn.with_shell("pipewire-pulse")
+-- awful.spawn.with_shell("wireplumber")
+-- awful.spawn.with_shell("pa-applet")
+-- awful.spawn.with_shell("nm-applet")
+-- awful.spawn.with_shell("lxpolkit")
+-- awful.spawn.with_shell("kdeconnectd")
+-- awful.spawn.with_shell("kdeconnect-indicator")
+-- awful.spawn.with_shell("dunst")

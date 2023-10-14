@@ -6,7 +6,13 @@ function run {
     $@&
   fi
 }
-run lxsession &
-run nm-applet &
 run picom &
-run nitrogen --restore &
+run pipewire &
+run pipewire-pulse &
+run wireplumber &
+run pa-applet &
+run nm-applet &
+run lxsession &
+run kdeconnectd &
+run kdeconnect-indicator &
+run dunst &
